@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=hari ke 2
+Exec=/usr/bin/ignsdk -p /opt/ignsdk/hari2.ign
+Icon=/opt/ignsdk/hari2.ign/icons/app.png
+Terminal=false
+Type=Application
+Categories=Utility

@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+<head>
+<script type="text/javascript" src="qrc:///js/jquery.js"></script>
+<script type="text/javascript" src="qrc:///js/ign.js"></script>
+<script type="text/javascript">
+var db = ign.sql();
+var con = db.driver("mysql","localhost:root:pass123:peserta");
+function add(){
+		var nama = $('#nama').val();
+		var alamat = $('#alamat').val();
+		console.log(db.query("insert into peserta (nama,alamat) value ('"+nama+"','"+alamat+"')"));
+	}
+$(function(){
+	if(con){
+		var data = db.query('select * from peserta');
+		var html = "<tr><td>No</td><td>nama</td><td>alamat</td></tr>";
+		$.each(data.content, function(i,v) {
+		var no = i + 1;
+		  html += "<tr><td>"+no+"</td><td>"+v.nama+"</td><td>"+v.alamat+"</td></tr>";
+		});
+		
+		$("#ibnu").html(html);
+	}
+	else{
+		alert('database ga connect');
+	}
+});
+</script>
+</head>
+<body>
+<input type="text" id="nama" placeholder="nama">
+<input type="text" id="alamat" placeholder="alamat">
+<input type="submit" onclick="add()">
+ <table id="ibnu" border="1"></table>
+ 
+</body>
+</html>
